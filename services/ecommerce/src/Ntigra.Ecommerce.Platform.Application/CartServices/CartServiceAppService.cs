@@ -8,43 +8,65 @@ public sealed class CartServiceAppService(ICartRepository cartRepository) : ICar
 
     public async Task AddToCartAsync(int productId)
     {
-        await cartRepository.AddAsync(productId);
+        try
+        {
+            await cartRepository.AddAsync(productId);
+        }
+        catch(Exception)
+        {
+            throw;
+        }
     }
 
     public async Task RemoveFromCartAsync(int productId)
     {
-        await cartRepository.RemoveAsync(productId);
+        try
+        {
+            await cartRepository.RemoveAsync(productId);
+
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     public async Task<CartSummary> GetCartSummaryAsync()
     {
-        var cartItems = await cartRepository.GetCartItemsAsync();
-        var totalPrice = cartItems.Sum(x => x.Product.Price);
-        var hasDiscount = totalPrice >= PRICE_THRESHOLD;
-
-        var items = cartItems.Select(item =>
+        try
         {
-            var discount = hasDiscount
-                ? item.Product.Price * item.Product.DiscountPercent / 100m
-                : 0;
+            var cartItems = await cartRepository.GetCartItemsAsync();
+            var totalPrice = cartItems.Sum(x => x.Product.Price);
+            var hasDiscount = totalPrice >= PRICE_THRESHOLD;
 
-            return new CartItemSummary
+            var items = cartItems.Select(item =>
             {
-                ProductName = item.Product.Name,
-                Description = item.Product.Description,
-                OriginalPrice = item.Product.Price,
-                DiscountPercent = item.Product.DiscountPercent,
-                DiscountAmount = discount
+                var discount = hasDiscount
+                    ? item.Product.Price * item.Product.DiscountPercent / 100m
+                    : 0;
+
+                return new CartItemSummary
+                {
+                    ProductName = item.Product.Name,
+                    Description = item.Product.Description,
+                    OriginalPrice = item.Product.Price,
+                    DiscountPercent = item.Product.DiscountPercent,
+                    DiscountAmount = discount
+                };
+            }).ToList();
+
+            var totalDiscount = items.Sum(x => x.DiscountAmount);
+
+            return new CartSummary
+            {
+                Items = items,
+                TotalPrice = totalPrice,
+                TotalDiscount = totalDiscount
             };
-        }).ToList();
-
-        var totalDiscount = items.Sum(x => x.DiscountAmount);
-
-        return new CartSummary
+        }
+        catch(Exception)
         {
-            Items = items,
-            TotalPrice = totalPrice,
-            TotalDiscount = totalDiscount
-        };
+            throw;
+        }
     }
 }

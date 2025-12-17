@@ -7,17 +7,9 @@ public sealed class ProductRepository(AppDbContext context) : IProductRepository
 {
     public async Task<List<Product>> GetAllProductsAsync()
     {
-        try
-        {
-            return await context.Products
-                .Where(p => p.IsActive)
-                .AsNoTracking()
-                .ToListAsync();
-        }
-        catch(Exception)
-        {
-            throw;
-        }
-    
+        return await context.Products
+            .Where(p => p.IsActive)
+            .AsNoTracking()
+            .ToListAsync();
     }
 }

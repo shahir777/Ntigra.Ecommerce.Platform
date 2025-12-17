@@ -13,24 +13,37 @@ public sealed class CartRepository(AppDbContext context) : ICartRepository
 {
     public async Task AddAsync(int productId)
     {
-        var item = new CartItem
-        {
-            ProductId = productId
-        };
+        var existingItem = await context.CartItems
+        .FirstOrDefaultAsync(x => x.ProductId == productId);
 
-        context.CartItems.Add(item);
+        if (existingItem != null)
+        {
+            existingItem.Quantity += 1;
+        }
+        else
+        {
+            context.CartItems.Add(new CartItem
+            {
+                ProductId = productId,
+                Quantity = 1
+            });
+        }
+
         await context.SaveChangesAsync();
     }
 
     public async Task RemoveAsync(int productId)
     {
         var item = await context.CartItems
-         .Where(x => x.ProductId == productId)
-         .FirstOrDefaultAsync();
+        .FirstOrDefaultAsync(x => x.ProductId == productId);
 
         if (item == null) return;
 
-        context.CartItems.Remove(item);
+        if (item.Quantity > 1)
+            item.Quantity--;
+        else
+            context.CartItems.Remove(item);
+
         await context.SaveChangesAsync();
     }
 
