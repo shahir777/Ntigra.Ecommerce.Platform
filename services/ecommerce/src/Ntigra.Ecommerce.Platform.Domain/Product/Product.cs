@@ -2,7 +2,7 @@
 
 namespace Ntigra.Ecommerce.Platform.Domain.Product;
 
-[Table("t_product", Schema = "public")]
+[Table("t_product")]
 public class Product
 {
     [Column("id")]

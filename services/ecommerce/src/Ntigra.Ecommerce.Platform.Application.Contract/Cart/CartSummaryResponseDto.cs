@@ -18,5 +18,4 @@ public class CartItemSummary
     public decimal DiscountAmount { get; set; }
     public int Quantity { get; set; }
     public decimal FinalPrice => OriginalPrice - DiscountAmount;
-    public int Quantity { get; set; }
 }
