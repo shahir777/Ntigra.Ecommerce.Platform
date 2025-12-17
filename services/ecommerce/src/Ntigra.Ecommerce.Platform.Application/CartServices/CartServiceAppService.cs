@@ -47,11 +47,13 @@ public sealed class CartServiceAppService(ICartRepository cartRepository) : ICar
 
                 return new CartItemSummary
                 {
+                    ProductId = item.ProductId,
                     ProductName = item.Product.Name,
                     Description = item.Product.Description,
                     OriginalPrice = item.Product.Price,
                     DiscountPercent = item.Product.DiscountPercent,
-                    DiscountAmount = discount
+                    DiscountAmount = discount,
+                    Quantity = item.Quantity
                 };
             }).ToList();
 
@@ -69,4 +71,9 @@ public sealed class CartServiceAppService(ICartRepository cartRepository) : ICar
             throw;
         }
     }
+
+    public async Task<int> GetCartItemCountAsync()
+    { 
+        return await cartRepository.GetCartItemCountAsync();
+    } 
 }

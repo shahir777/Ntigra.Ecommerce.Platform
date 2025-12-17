@@ -11,4 +11,5 @@ public interface ICartRepository
     Task AddAsync(int productId);
     Task RemoveAsync(int productId);
     Task<List<CartItem>> GetCartItemsAsync();
+    Task<int> GetCartItemCountAsync();
 }

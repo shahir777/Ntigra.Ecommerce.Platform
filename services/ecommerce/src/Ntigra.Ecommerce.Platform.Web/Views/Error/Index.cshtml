@@ -1,0 +1,9 @@
+﻿@* @model Ntigra.Ecommerce.Platform.Web.Models.ErrorViewModel *@
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            showErrorModal("@Model.ErrorMessage", "@Model.ErrorCode");
+        });
+    </script>
+}

@@ -16,10 +16,12 @@ public class CartSummary
 
 public class CartItemSummary
 {
+    public int ProductId { get; set; }
     public string ProductName { get; set; }
     public string Description { get; set; }
     public decimal OriginalPrice { get; set; }
     public int DiscountPercent { get; set; }
     public decimal DiscountAmount { get; set; }
     public decimal FinalPrice => OriginalPrice - DiscountAmount;
+    public int Quantity { get; set; }
 }

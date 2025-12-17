@@ -7,13 +7,17 @@ public sealed class CartController(ICartService cartService) : Controller
     public async Task<IActionResult> Add(int productId)
     {
         await cartService.AddToCartAsync(productId);
-        return RedirectToAction("Index");
+        var count = await cartService.GetCartItemCountAsync();
+
+        return Json(new { success = true, count });
     }
 
     public async Task<IActionResult> Remove(int productId)
     {
         await cartService.RemoveFromCartAsync(productId);
-        return RedirectToAction("Index");
+        var count = await cartService.GetCartItemCountAsync();
+
+        return Json(new { success = true, count });
     }
 
     public async Task<IActionResult> Index()
