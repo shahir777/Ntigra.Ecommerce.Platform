@@ -8,8 +8,13 @@ namespace Ntigra.Ecommerce.Platform.Domain.Shared.Enums;
 
 public enum ReturnCode
 {
-    SUCCESS,
-    ALREADY_REGISTERED_EMAIL,
-    UNHANDLED_EXCEPTION,
-    CREATE_USER_BAD_REQUEST
+    Success,
+    Fail,
+    AlreadyRegisteredEmail,
+    UnhandledException,
+    CreateUserBadRequest,
+    ProductNotFound,
+    DomainError,
+    CartEmpty,
+    DataError
 }

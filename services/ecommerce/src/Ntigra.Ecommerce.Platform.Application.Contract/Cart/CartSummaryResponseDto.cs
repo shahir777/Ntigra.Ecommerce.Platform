@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ntigra.Ecommerce.Platform.Application.Contract.Cart;
-public class CartSummary
+﻿namespace Ntigra.Ecommerce.Platform.Application.Contract.Cart;
+public class CartSummaryResponseDto
 {
     public List<CartItemSummary> Items { get; set; } = [];
     public decimal TotalPrice { get; set; }
@@ -22,6 +16,7 @@ public class CartItemSummary
     public decimal OriginalPrice { get; set; }
     public int DiscountPercent { get; set; }
     public decimal DiscountAmount { get; set; }
+    public int Quantity { get; set; }
     public decimal FinalPrice => OriginalPrice - DiscountAmount;
     public int Quantity { get; set; }
 }

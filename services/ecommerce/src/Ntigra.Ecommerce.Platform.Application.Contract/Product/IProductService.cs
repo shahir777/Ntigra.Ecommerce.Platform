@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ntigra.Ecommerce.Platform.Domain.Shared.Results;
 
 namespace Ntigra.Ecommerce.Platform.Application.Contract.Product;
 public interface IProductService
 {
-    Task<List<ProductDto>> GetAllProductsAsync();
+    Task<Response<List<ProductResponseDto>>> GetAllProductsAsync();
 }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Ntigra.Ecommerce.Platform.Application.Contract.Product;
 using Ntigra.Ecommerce.Platform.Web.Models;
-using System.Diagnostics;
 
 namespace Ntigra.Ecommerce.Platform.Web.Controllers
 {
@@ -9,14 +8,24 @@ namespace Ntigra.Ecommerce.Platform.Web.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var products = await productService.GetAllProductsAsync();
-            return View(products);
+            var response = await productService.GetAllProductsAsync();
+            return response.Status ? 
+                View(response.Data) : View("Error", new ErrorViewModel
+                {
+                    ErrorCode = response.ResponseCode,
+                    ErrorMessage = response.ResponseMessage
+                });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                ErrorCode = "500",
+                ErrorMessage = "Unexcpected error"
+            });
+            
         }
     }
 }
