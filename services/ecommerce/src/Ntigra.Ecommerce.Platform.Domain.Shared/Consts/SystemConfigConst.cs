@@ -2,5 +2,5 @@
 
 public class SystemConfigConst
 {
-    public const decimal DiscountThreshold = 100m;
+    public const decimal DiscountThreshold = 2000m;
 }
