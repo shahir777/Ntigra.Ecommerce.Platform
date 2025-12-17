@@ -11,6 +11,7 @@ using Ntigra.Ecommerce.Platform.Domain.Shared.Results;
 namespace Ntigra.Ecommerce.Platform.Application.CartServices;
 public sealed class CartServiceAppService(ICartRepository cartRepository,
     DiscountManager discountManager,
+    Validator validator,
     ILogger<CartServiceAppService> log) : ICartService
 {
     private const decimal PriceThreshold = 100;
@@ -19,6 +20,14 @@ public sealed class CartServiceAppService(ICartRepository cartRepository,
     {
         try
         {
+            var validationResult = validator.Validate(productId);
+
+            if (validationResult is not null)
+            {
+                log.Error($"Validation error: {validationResult}");
+                return validationResult;
+            }
+
             log.Info($"Adding product: {productId} to cart");
             await cartRepository.AddAsync(productId);
             return Response<string>.Success(message: "Product added to cart");
@@ -39,6 +48,14 @@ public sealed class CartServiceAppService(ICartRepository cartRepository,
     {
         try
         {
+            var validationResult = validator.Validate(productId);
+
+            if (validationResult is not null)
+            {
+                log.Error($"Validation error: {validationResult}");
+                return validationResult;
+            }
+            
             log.Info($"Removing product: {productId} from cart");
             await cartRepository.RemoveAsync(productId);
             return Response<string>.Success(message: "Product removed from cart");

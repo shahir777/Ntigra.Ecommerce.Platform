@@ -15,5 +15,6 @@ public enum ReturnCode
     CreateUserBadRequest,
     ProductNotFound,
     DomainError,
-    CartEmpty
+    CartEmpty,
+    DataError
 }

@@ -14,6 +14,7 @@ namespace Ntigra.Ecommerce.Platform.Domain.Shared.Helper
             { ReturnCode.Fail, ("218", "Response failed") },
             { ReturnCode.CartEmpty, ("218", "Response failed") },
             { ReturnCode.DomainError, ("218", "Response failed") },
+            { ReturnCode.DataError, ( "006", "Failed: '{0}'" ) },
         };
 
         public static (string ResponseCode, string ResponseMessage) GetResponseDetails(ReturnCode code, string fieldName = null)

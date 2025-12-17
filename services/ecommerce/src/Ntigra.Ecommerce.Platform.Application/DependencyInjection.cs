@@ -12,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IProductService, ProductServiceAppService>();
         services.AddScoped<ICartService, CartServiceAppService>();
+        services.AddScoped<Validator>();
 
         services.AddDomainServices();
         return services;
