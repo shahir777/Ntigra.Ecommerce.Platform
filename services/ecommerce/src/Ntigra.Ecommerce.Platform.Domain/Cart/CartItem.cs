@@ -3,7 +3,7 @@ using Ntigra.Ecommerce.Platform.Domain.Shared.Exceptions;
 
 namespace Ntigra.Ecommerce.Platform.Domain.Cart;
 
-[Table("t_cart_items", Schema = "public")]
+[Table("t_cart_items")]
 public class CartItem
 {
     [Column("id")]

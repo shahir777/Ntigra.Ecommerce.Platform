@@ -9,9 +9,9 @@ public sealed class ProductRepository(AppDbContext context ,
 {
     public async Task<List<Product>> GetAllProductsAsync()
     {
-        return await context.Products
-            .Where(p => p.IsActive)
-            .AsNoTracking()
-            .ToListAsync();
-    }
+            return await context.Products
+                .Where(p => p.IsActive)
+                .AsNoTracking()
+                .ToListAsync();
+        }
 }

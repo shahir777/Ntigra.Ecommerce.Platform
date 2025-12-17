@@ -14,7 +14,7 @@ namespace Ntigra.Ecommerce.Platform.Infrastructure
             IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(
+                options.UseSqlServer(
                     configuration.GetConnectionString("DbConnection")
                 )
             );
