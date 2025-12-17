@@ -1,0 +1,50 @@
+<!-- Topbar Start -->
+<header class="app-topbar">
+    <div class="container-fluid topbar-menu">
+        <div class="d-flex align-items-center gap-2">
+            <!-- Topbar Brand Logo -->
+            <div class="logo-topbar">
+                <!-- Logo light -->
+                <a class="logo-light" href="#">
+                    <span class="logo-lg">
+                        <img alt="logo" src="/images/logo.png" />
+                        </span>
+                    <span class="logo-sm">
+                        <img alt="small logo" src="/images/logo.png" />
+                        </span>
+                </a>
+                <!-- Logo Dark -->
+                <a class="logo-dark" href="#">
+                    <span class="logo-lg">
+                        <img alt="dark logo" src="/images/logo.png" />
+                        </span>
+                    <span class="logo-sm">
+                        <img alt="small logo" src="/images/logo.png" />
+                        </span>
+                </a>
+            </div>
+            <!-- Sidebar Menu Toggle Button -->
+            <button class="sidenav-toggle-button btn btn-default btn-icon">
+                <i class="ti ti-menu-4 fs-22"></i>
+            </button>
+            <!-- Horizontal Menu Toggle Button -->
+            <button class="topnav-toggle-button px-2" data-bs-target="#topnav-menu-content" data-bs-toggle="collapse">
+                <i class="ti ti-menu-4 fs-22"></i>
+            </button>
+        </div> <!-- .d-flex-->
+        <div class="d-flex align-items-center gap-2">
+            <!-- Search -->
+            <div class="app-search d-none d-xl-flex me-2">
+                <input class="form-control topbar-search rounded-pill" name="search" placeholder="Quick Search..."
+                       type="search"/>
+                <i class="app-search-icon text-muted" data-lucide="search"></i>
+            </div>
+            <!-- Dropdown -->
+            <div class="topbar-item">
+                @await Component.InvokeAsync("CartCount")
+            </div>
+
+        </div>
+    </div>
+</header>
+<!-- Topbar End -->

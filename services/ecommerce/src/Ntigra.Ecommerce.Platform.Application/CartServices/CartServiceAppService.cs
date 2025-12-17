@@ -127,4 +127,9 @@ public sealed class CartServiceAppService(ICartRepository cartRepository,
             return Response<CartSummaryResponseDto>.Fail(message: ex.Message);
         }
     }
+
+    public async Task<int> GetCartItemCountAsync()
+    { 
+        return await cartRepository.GetCartItemCountAsync();
+    } 
 }

@@ -1,42 +1,90 @@
 ﻿@model Ntigra.Ecommerce.Platform.Application.Contract.Cart.CartSummaryResponseDto
+@{
+    ViewBag.Title = "Cart Summary";
+    ViewBag.SubTitle = "Cart";
+}
+@section styles
+{
 
-<h2>Cart Summary</h2>
+}
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Discount</th>
-            <th>Final Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Items)
-        {
-            <tr>
-                <td>@item.ProductName</td>
-                <td>@item.Description</td>
-                <td>₹@item.OriginalPrice</td>
-                <td>
-                    @if (Model.HasDiscount)
-                    {
-                        <span class="text-success">
-                            -₹@item.DiscountAmount (@item.DiscountPercent%)
-                        </span>
-                    }
-                    else
-                    {
-                        <span>-</span>
-                    }
-                </td>
-                <td>₹@item.FinalPrice</td>
-            </tr>
-        }
-    </tbody>
-</table>
+@await Html.PartialAsync("~/Views/Shared/Partials/_PageTitle.cshtml")
 
+<div class="row">
+    <div class="col-12">
+        <div class="card" data-table="" data-table-rows-per-page="8">
+            <div class="card-header border-light justify-content-between">
+                <div class="d-flex gap-2">
+                    <div class="app-search">
+                        <input class="form-control" data-table-search="" placeholder="Search product name..."
+                               type="search" />
+                        <i class="app-search-icon text-muted" data-lucide="search"></i>
+                    </div> 
+                </div>  
+            </div>  
+            <div class="table-responsive">
+                <table class="table table-custom table-centered table-select table-hover w-100 mb-0">
+                    <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                        <tr class="text-uppercase fs-xxs">
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Discount %</th> 
+                            <th>Quantity</th>
+                            <th>Final Price</th>
+                            <th class="text-center" style="width: 1%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex">
+                                            <h5 class="mb-0">@item.ProductName</h5>
+                                    </div>
+                                </td>
+                                <td>@item.Description</td>
+                                <td>₹@item.OriginalPrice</td>
+                                <td>
+                                    @if (Model.HasDiscount)
+                                    {
+                                        <span class="text-success">
+                                            -₹@item.DiscountAmount (@item.DiscountPercent%)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>-</span>
+                                    }
+                                </td>
+                                
+                                <td>@item.Quantity</td>
+                                <td>₹@item.FinalPrice</td> 
+                                <td>
+                                    <div class="d-flex justify-content-center gap-1"> 
+                                        <a class="btn btn-danger btn-icon btn-sm rounded-circle remove-from-cart" data-id="@item.ProductId">
+                                            <i class="ti ti-trash fs-lg"></i>
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        } 
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer border-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div data-table-pagination-info="products"></div>
+                    <div data-table-pagination=""></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div><!-- end row -->
 <hr />
 
 <div class="text-end">
@@ -47,9 +95,7 @@
         Final Payable Amount: ₹@Model.FinalPrice
     </h4>
 </div>
-
-<a asp-controller="Product"
-   asp-action="Index"
-   class="btn btn-secondary mt-3">
-    Continue Shopping
-</a>
+@section scripts
+{
+    <script src="/js/custom-table.js"></script>
+}

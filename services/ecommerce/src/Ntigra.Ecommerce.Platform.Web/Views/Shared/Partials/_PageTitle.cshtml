@@ -1,0 +1,29 @@
+@{
+    var title = ViewBag.Title;
+    var subtitle = ViewBag.SubTitle;
+}
+
+@if (!string.IsNullOrEmpty(title))
+{
+<div class="page-title-head d-flex align-items-center">
+  <div class="flex-grow-1">
+    <h4 class="fs-xl fw-bold m-0">@title</h4>
+  </div>
+  @if (string.Equals(subtitle, "Cart", StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="d-flex gap-1"> 
+                <a class="btn btn-primary ms-1" href="/">
+                    <i class="fs-sm me-2" data-lucide="plus"></i> Add Product
+                </a>
+            </div>
+        }
+        @if (string.Equals(subtitle, "Product", StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="d-flex gap-1">
+                <a class="btn btn-primary ms-1" href="/Cart">
+                    <i class="fs-sm me-2" data-lucide="shopping-cart"></i> Go to Cart
+                </a>
+            </div>
+        }
+</div>
+}

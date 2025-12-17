@@ -1,45 +1,72 @@
-﻿@model List<Ntigra.Ecommerce.Platform.Application.Contract.Product.ProductResponseDto>
+﻿@{
+    ViewBag.Title = "Products";
+    ViewBag.Subtitle = "Product";
+}
+@section styles
+{
 
-<h2 class="mb-4">Products</h2>
+}
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Discount %</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>@product.Name</td>
-                <td>@product.Description</td>
-                <td>₹@product.Price</td>
-                <td>@product.DiscountPercent</td>
-                <td>
-                    <a asp-controller="Cart"
-                       asp-action="Add"
-                       asp-route-productId="@product.Id"
-                       class="btn btn-sm btn-primary">
-                        Add
-                    </a>
+@await Html.PartialAsync("~/Views/Shared/Partials/_PageTitle.cshtml")
 
-                    <a asp-controller="Cart"
-                       asp-action="Remove"
-                       asp-route-productId="@product.Id"
-                       class="btn btn-sm btn-danger ms-1">
-                        Remove
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-controller="Cart" asp-action="Index" class="btn btn-success">
-    Go to Cart
-</a>
+<div class="row">
+    <div class="col-12">
+        <div class="card" data-table="" data-table-rows-per-page="8">
+            <div class="card-header border-light justify-content-between">
+                <div class="d-flex gap-2">
+                    <div class="app-search">
+                        <input class="form-control" data-table-search="" placeholder="Search product name..."
+                               type="search" />
+                        <i class="app-search-icon text-muted" data-lucide="search"></i>
+                    </div> 
+                </div>  
+            </div>
+            <div class="table-responsive">
+                <table class="table table-custom table-centered table-select table-hover w-100 mb-0">
+                    <thead class="bg-light align-middle bg-opacity-25 thead-sm">
+                        <tr class="text-uppercase fs-xxs">
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Discount %</th>
+                            <th class="text-center" style="width: 1%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex">
+                                            <h5 class="mb-0">@product.Name</h5>
+                                    </div>
+                                </td>
+                                <td>@product.Description</td>
+                                <td>₹@product.Price</td>
+                                <td>@product.DiscountPercent</td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-1">
+                                        <a class="btn btn-default btn-icon btn-sm rounded-circle add-to-cart"
+                                           data-id="@product.Id">
+                                            <i class="fs-3" data-lucide="package-plus"></i>
+                                        </a>
+                                    </div> 
+                                </td>
+                            </tr>
+                        } 
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer border-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div data-table-pagination-info="products"></div>
+                    <div data-table-pagination=""></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end col -->
+</div><!-- end row -->
+@section scripts
+{
+    <script src="/js/custom-table.js"></script>
+}

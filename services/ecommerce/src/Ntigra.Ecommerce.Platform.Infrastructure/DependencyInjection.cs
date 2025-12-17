@@ -12,13 +12,9 @@ namespace Ntigra.Ecommerce.Platform.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
-        {
+        { 
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("DbConnection")
-                )
-            );
-
+            options.UseSqlServer(configuration.GetConnectionString("DbConnection")));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
 

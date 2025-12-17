@@ -60,4 +60,8 @@ public sealed class CartRepository(AppDbContext context,
             .AsNoTracking()
             .ToListAsync();
     }
+    public async Task<int> GetCartItemCountAsync()
+    {
+        return await context.CartItems.SumAsync(x => x.Quantity);
+    }
 }

@@ -8,20 +8,26 @@ public sealed class CartController(ICartService cartService) : Controller
     public async Task<IActionResult> Add(int productId)
     {
         var response = await cartService.AddToCartAsync(productId);
-        return response.Status ? RedirectToAction("Index") : View("Error", new ErrorViewModel
+        var count = await cartService.GetCartItemCountAsync();
+        return Json(new
         {
-            ErrorCode = response.ResponseCode,
-            ErrorMessage = response.ResponseMessage
+            success = response.Status,
+            count,
+            errorCode = response.Status ? null : response.ResponseCode,
+            errorMessage = response.Status ? null : response.ResponseMessage
         });
     }
 
     public async Task<IActionResult> Remove(int productId)
     {
         var response = await cartService.RemoveFromCartAsync(productId);
-        return response.Status ? RedirectToAction("Index") : View("Error", new ErrorViewModel
+        var count = await cartService.GetCartItemCountAsync();
+        return Json(new
         {
-            ErrorCode = response.ResponseCode,
-            ErrorMessage = response.ResponseMessage
+            success = response.Status,
+            count,
+            errorCode = response.Status ? null : response.ResponseCode,
+            errorMessage = response.Status ? null : response.ResponseMessage
         });
     }
 
@@ -34,4 +40,5 @@ public sealed class CartController(ICartService cartService) : Controller
             ErrorMessage = response.ResponseMessage
         });
     }
+
 }
