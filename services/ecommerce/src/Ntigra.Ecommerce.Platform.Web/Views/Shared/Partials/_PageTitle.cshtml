@@ -17,5 +17,13 @@
                 </a>
             </div>
         }
+        @if (string.Equals(subtitle, "Product", StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="d-flex gap-1">
+                <a class="btn btn-primary ms-1" href="/Cart">
+                    <i class="fs-sm me-2" data-lucide="shopping-cart"></i> Go to Cart
+                </a>
+            </div>
+        }
 </div>
 }
