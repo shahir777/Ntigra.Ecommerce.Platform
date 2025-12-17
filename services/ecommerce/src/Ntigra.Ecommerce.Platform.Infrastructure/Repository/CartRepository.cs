@@ -1,37 +1,56 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Ntigra.Ecommerce.Platform.Application.Contract.Cart;
+using Microsoft.Extensions.Logging;
 using Ntigra.Ecommerce.Platform.Domain.Cart;
+using Ntigra.Ecommerce.Platform.Domain.Shared.Helper.Extensions;
 using Ntigra.Ecommerce.Platform.Infrastructure.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ntigra.Ecommerce.Platform.Infrastructure.Repository;
-public sealed class CartRepository(AppDbContext context) : ICartRepository
+public sealed class CartRepository(AppDbContext context,
+    ILogger<CartRepository> log) : ICartRepository
 {
     public async Task AddAsync(int productId)
     {
-        var item = new CartItem
-        {
-            ProductId = productId
-        };
+        var cartItems = await context.CartItems
+            .Where(x => x.ProductId == productId)
+            .FirstOrDefaultAsync();
 
-        context.CartItems.Add(item);
+        if (cartItems is null)
+        {
+            log.Debug($"Cart is empty for for product : {productId}, adding product to cart");
+            context.CartItems.Add(new CartItem
+            {
+                ProductId = productId,
+                Quantity = 1
+            });
+        }
+        else
+        {
+            log.Debug($"Adding quantiy to product : {productId}");
+            cartItems.AddQuantity();
+        }
+        
         await context.SaveChangesAsync();
     }
 
     public async Task RemoveAsync(int productId)
     {
-        var item = await context.CartItems
-         .Where(x => x.ProductId == productId)
-         .FirstOrDefaultAsync();
+        var cartItems = await context.CartItems
+            .Where(x => x.ProductId == productId)
+            .FirstOrDefaultAsync();
 
-        if (item == null) return;
-
-        context.CartItems.Remove(item);
-        await context.SaveChangesAsync();
+        if (cartItems is null)
+        {
+            log.Debug($"Cart is empty for for product : {productId}");
+        }
+        else
+        {
+            log.Debug($"Adding quantiy to product : {productId}");
+            cartItems.RemoveQuantity();
+            if (cartItems.IsEmpty)
+                context.CartItems.Remove(cartItems);
+                
+            await context.SaveChangesAsync();
+        }
     }
 
     public async Task<List<CartItem>> GetCartItemsAsync()

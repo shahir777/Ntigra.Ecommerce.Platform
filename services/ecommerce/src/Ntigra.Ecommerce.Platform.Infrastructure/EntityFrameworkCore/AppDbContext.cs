@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Ntigra.Ecommerce.Platform.Application.Contract.Cart;
+using Ntigra.Ecommerce.Platform.Domain.Cart;
 using Ntigra.Ecommerce.Platform.Domain.Product;
 
 namespace Ntigra.Ecommerce.Platform.Infrastructure.EntityFrameworkCore
