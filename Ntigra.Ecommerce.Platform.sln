@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ecommerce", "ecommerce", "{95B28D9C-B081-4539-A5EF-DB2C538E4060}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{66C6F903-DD7E-4B09-8B10-2E33D3FBD9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Application", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Application\Ntigra.Ecommerce.Platform.Application.csproj", "{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Application.Contract", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Application.Contract\Ntigra.Ecommerce.Platform.Application.Contract.csproj", "{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Domain", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Domain\Ntigra.Ecommerce.Platform.Domain.csproj", "{6DBC1901-C06F-0ADC-B095-A01F237F2E2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Domain.Shared", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Domain.Shared\Ntigra.Ecommerce.Platform.Domain.Shared.csproj", "{65669271-1551-24B4-6E47-41C44ACFC6B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Infrastructure", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Infrastructure\Ntigra.Ecommerce.Platform.Infrastructure.csproj", "{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Web", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Web\Ntigra.Ecommerce.Platform.Web.csproj", "{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBC1901-C06F-0ADC-B095-A01F237F2E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBC1901-C06F-0ADC-B095-A01F237F2E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBC1901-C06F-0ADC-B095-A01F237F2E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBC1901-C06F-0ADC-B095-A01F237F2E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65669271-1551-24B4-6E47-41C44ACFC6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65669271-1551-24B4-6E47-41C44ACFC6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65669271-1551-24B4-6E47-41C44ACFC6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65669271-1551-24B4-6E47-41C44ACFC6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{95B28D9C-B081-4539-A5EF-DB2C538E4060} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942} = {95B28D9C-B081-4539-A5EF-DB2C538E4060}
+		{66C6F903-DD7E-4B09-8B10-2E33D3FBD9A5} = {95B28D9C-B081-4539-A5EF-DB2C538E4060}
+		{19C2A68F-C5D6-8FF4-613C-DF3FE90F6DA5} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{BE968550-0DD9-0DFB-4A28-2A7EAA270EDA} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{6DBC1901-C06F-0ADC-B095-A01F237F2E2A} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{65669271-1551-24B4-6E47-41C44ACFC6B9} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA5577C0-8072-48FC-B2E1-028DA831927E}
+	EndGlobalSection
+EndGlobal

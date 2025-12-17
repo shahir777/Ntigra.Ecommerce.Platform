@@ -1,0 +1,45 @@
+﻿@model List<Ntigra.Ecommerce.Platform.Application.Contract.Product.ProductDto>
+
+<h2 class="mb-4">Products</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Discount %</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>₹@product.Price</td>
+                <td>@product.DiscountPercent</td>
+                <td>
+                    <a asp-controller="Cart"
+                       asp-action="Add"
+                       asp-route-productId="@product.Id"
+                       class="btn btn-sm btn-primary">
+                        Add
+                    </a>
+
+                    <a asp-controller="Cart"
+                       asp-action="Remove"
+                       asp-route-productId="@product.Id"
+                       class="btn btn-sm btn-danger ms-1">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Cart" asp-action="Index" class="btn btn-success">
+    Go to Cart
+</a>

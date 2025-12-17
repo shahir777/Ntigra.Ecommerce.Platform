@@ -1,0 +1,55 @@
+﻿@model Ntigra.Ecommerce.Platform.Application.Contract.Cart.CartSummary
+
+<h2>Cart Summary</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Final Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Description</td>
+                <td>₹@item.OriginalPrice</td>
+                <td>
+                    @if (Model.HasDiscount)
+                    {
+                        <span class="text-success">
+                            -₹@item.DiscountAmount (@item.DiscountPercent%)
+                        </span>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>₹@item.FinalPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<div class="text-end">
+    <p><strong>Total Amount:</strong> ₹@Model.TotalPrice</p>
+    <p><strong>Total Discount:</strong> ₹@Model.TotalDiscount</p>
+
+    <h4 class="text-success">
+        Final Payable Amount: ₹@Model.FinalPrice
+    </h4>
+</div>
+
+<a asp-controller="Product"
+   asp-action="Index"
+   class="btn btn-secondary mt-3">
+    Continue Shopping
+</a>
