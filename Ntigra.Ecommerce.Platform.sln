@@ -7,8 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ecommerce", "ecommerce", "{95B28D9C-B081-4539-A5EF-DB2C538E4060}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		docker-compose.yml = docker-compose.yml
 		Dockerfile = Dockerfile
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}"
@@ -26,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Infrastructure", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Infrastructure\Ntigra.Ecommerce.Platform.Infrastructure.csproj", "{3425ACB9-425F-2EF4-8AA1-5DF6B770489C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Web", "services\ecommerce\src\Ntigra.Ecommerce.Platform.Web\Ntigra.Ecommerce.Platform.Web.csproj", "{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ntigra.Ecommerce.Platform.Tests", "services\ecommerce\test\Ntigra.Ecommerce.Platform.Tests\Ntigra.Ecommerce.Platform.Tests.csproj", "{0AC6347D-ECAE-1E61-90A6-7F3675FE2740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC6347D-ECAE-1E61-90A6-7F3675FE2740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC6347D-ECAE-1E61-90A6-7F3675FE2740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC6347D-ECAE-1E61-90A6-7F3675FE2740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC6347D-ECAE-1E61-90A6-7F3675FE2740}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,7 @@ Global
 		{65669271-1551-24B4-6E47-41C44ACFC6B9} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
 		{3425ACB9-425F-2EF4-8AA1-5DF6B770489C} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
 		{115D5070-BCBC-493D-8B24-9F3A5F02D4A4} = {0FE1EAF8-AB23-4F0E-907D-7FA7D60B1942}
+		{0AC6347D-ECAE-1E61-90A6-7F3675FE2740} = {66C6F903-DD7E-4B09-8B10-2E33D3FBD9A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA5577C0-8072-48FC-B2E1-028DA831927E}
